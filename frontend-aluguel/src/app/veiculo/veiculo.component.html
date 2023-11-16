@@ -1,0 +1,76 @@
+
+<br/>
+<div>
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td>Marca</td>
+                <td><input type="text" [(ngModel)]="veiculo.marca" placeholder="Informe a Marca"/></td>
+                <td>Modelo</td>
+                <td><input type="text" [(ngModel)]="veiculo.modelo" placeholder="Informe o Modelo"/></td>
+            </tr>
+            <tr>
+               <!--  (keyup)="validaPlaca()" -->
+               <!-- (keyup)="validaNumerosAnoFabricacao()" -->
+                <td>Cor</td>
+                <td><input type="text" [(ngModel)]="veiculo.cor" placeholder="Informe a Cor"/></td>
+                <td>Placa</td>
+                <td><input type="text"  [(ngModel)]="veiculo.placa" placeholder="Informe a palca "></td>
+            </tr>
+            <tr>
+                <td>Ano de Fabricação</td>
+                <td><input type="text"  [(ngModel)]="veiculo.anoFabricacao" placeholder="Informe o ano de fabricação"/></td>
+                <td></td>
+                <td>
+                    <button (click)="salvaVeiculo()" *ngIf="veiculo.id == null">Salvar</button>
+                    <button (click)="limpar()" *ngIf="veiculo.id != null">Cancelar</button>
+                    <button (click)="efetuarAlteracaoVeiculo()" *ngIf="veiculo.id != null">Alterar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br/>
+<br/>
+<table>
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+               Modelo
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Cor
+            </th>
+            <th>
+                Placa
+            </th>
+            <th>
+                Ano de Fabricação
+            </th>
+            <th>
+                opções
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let veiculo of veiculos; index as i">
+            <td><input type="checkbox" [(ngModel)]="veiculo.checked" (change)="!veiculo.checked"/></td>
+            <td>{{veiculo.modelo}}</td>
+            <td>{{veiculo.marca}}</td>
+            <td>{{veiculo.cor}}</td>
+            <td>{{veiculo.placa}}</td>
+            <td>{{veiculo.anoFabricacao}}</td>
+            <td>
+                <button (click)="alterarVeiculo(veiculo)">Alterar</button>
+                <button (click)="apagarVeiculo(veiculo.id, veiculo.marca)">excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="apagarVarios()">Apagar Selecionados</button>
